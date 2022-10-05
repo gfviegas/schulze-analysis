@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="o-problema">O Problema</h1>
+<blockquote>
+<p>Temática: Grafos acíclicos direcionados (<em>DAG</em>), relacionados à pesquisa do autor com modelos causais que também são <em>DAG</em></p>
+</blockquote>
+<p>Existem diversas organizações, coletivos, federações, e outros orgãos coletivos que possuem representantes eleitos por votação. O nosso próprio país é um desses exemplos, e está, no momento da elaboração desse trabalho, no meio de um desses processos eleitorais. Não existe somente uma maneira de realizar eleições, podendo ter métodos variados com diferentes critérios.</p>
+<p>Um desses métodos é conhecido como o <b>Método Schulze</b>, desenvolvido em 1997 por Markus Schulze, que seleciona um vencedor único usando votos de preferências, ou uma seleção ordenada de vencedores. Existem outros nomes para esse método como <em>Schwartz Sequential Dropping (SSD)</em>, <em>Beatpath Method</em>, <em>Path Winner</em>, entre outros. O método escolhe um vencedor que é preferido por uma maioria sobre todos os outros em uma comparação por pares.</p>
+<p>O Método Schulze é utilizado por diversas organizações como Ubuntu, Debian, Gentoo, a cidade de Turin - Itália, e o distrito de Southwark em Londres.</p>
+<h2 id="a-c%C3%A9dula-de-vota%C3%A7%C3%A3o">A Cédula de Votação</h2>
+<p>Nesse método de votação, ao invés de cada eleitor escolher um candidato em uma seleção de $N$ candidatos, o eleitor ordena uma subseleção com $M$ desses candidatos, do que mais prefere para o que menos prefere, como mostra o modelo e exemplos abaixo.</p>
+<p><img src="./assets/ballots.png" alt=""></p>
+<h2 id="modelagem">Modelagem</h2>
+<p>A partir de votos como esse, é possível então contabilizar quantos eleitores preferem um candidato $A$ a um candidato $B$. Seguindo o exemplo da imagem acima, comparando <code>Ciro Gomes</code> com <code>Simone Tebet</code>, podemos ver que <code>Ciro</code> está melhor rankeado na cédula 1, enquanto <code>Tebet</code> está melhor nas cédulas 2 e 3. Podemos dizer, então, que <code>Ciro</code> possui 1 cédula em sua vantagem na comparação com <code>Simone</code>, que por sua vez tem 2 cédulas em vantagem em relação a <code>Ciro</code>.</p>
+<p>Supondo que existam mais cédulas, como 50, e analisar caso a caso, é possível então montar uma matriz como a abaixo, onde cada célula informa qual a quantidade de cédulas que possui o candidato na linha $i$ em relação ao candidato na coluna $j$.</p>
+<center>
+    <img src="./assets/matrix.png" width="50%" height="auto" />
+</center>
+<p>Essa matriz, poderia ser representado por um grafo $G = (V,E)$ onde $V$ são os vértices com os candidatos e $E$ as arestas direcionados com o peso da quantidade de cédulas preferindo um candidato $A$ em detrimento de um $B$.</p>
+<center>
+    <img src="./assets/graph.png" width="40%" height="auto" />
+</center>
+<h2 id="caminho-mais-forte">Caminho mais <em>forte</em></h2>
+<p>A partir do grafo é possível ter caminhos diferentes entre dois candidatos $A$ e $B$. A <strong>força de um caminho</strong> é determinado pelo seu link mais fraco, ou seja, o menor valor de aresta no caminho.</p>
+<p>Por exemplo, considere os caminhos <code>Tebet</code> -&gt; <code>Soraya</code>. Temos um caminho <code>Tebet - Lula - Soraya</code> que possui valores de arestas, respectivas, <code>1 - 2</code>. Também tem um caminho <code>Tebet - Ciro - Soraya</code>, com arestas <code>6 - 9</code>. No primeiro caso, a <strong>força do caminho</strong> é 1, pois é $1$ o menor valor no caminho. No segundo caso, é $6$.</p>
+<h2 id="determinando-os-vencedores">Determinando o(s) vencedor(es)</h2>
+<p>A partir do cálculo do caminho mais forte, podemos ter uma nova matriz $P$ calculada, com o caminho mais forte entre todos os pares de candidatos.</p>
+<center>
+    <img src="./assets/weight_matrix_colored.png" width="50%" height="auto" />
+</center>
+<p>Agora a saída do método de Schulze pode ser determinada. Por exemplo, comparando <code>Bolsonaro</code> com <code>Tebet</code>, temos que <code>Bolsonaro &gt; Tebet</code>, visto que $P[$<code>Bolsonaro</code>$][$<code>Tebet</code>$] = 31 &gt; P[$<code>Tebet</code>$][$<code>Bolsonaro</code>$] = 19$. A imagem mostra de forma colorida em verde quem venceu o embate individual, e vermelho quem o perdeu.</p>
+<p>Comparando os vencedores dos embates individuais é possível então determinar que <code>Lula</code> $&gt;$ <code>Tebet</code> $&gt;$ <code>Ciro</code> $&gt;$ <code>Bolsonaro</code> $&gt;$ <code>Soraya</code>.</p>
+<blockquote>
+<p>Existem situações que podem ocasionar empate e que podem ser tratados. Entretanto, para simplificar, não o trataremos nesse trabalho, ignorando os empates e a interpretação do resultado em si.</p>
+</blockquote>
+<h2 id="mais-detalhes">Mais Detalhes</h2>
+<p>Veja <a href="https://www.youtube.com/watch?v=_HVeN0GnnuA">esse vídeo do YouTube</a>.</p>
+<hr/>
+<h1 id="algoritmo">Algoritmo</h1>
+<p>Dado uma entrada $X$, sendo $X$ uma matriz quadrada de dimensão $C$ (sendo $C$ o número de candidatos participantes), e $X[i,j]$ o número de votantes que prefere o candidato <code>i</code> ao candidato <code>j</code>, o algoritmo retorna uma saída $F$ que é uma matriz quadrada de dimensão $C$ onde $C[i,j]$ é a força do caminho mais forte entre o candidato <code>i</code> e candidato <code>j</code>.</p>
+<p>Esse algoritmo é uma versão adaptada do <strong>algoritmo de <em>Floyd-Warshall</em></strong>, que calcula o caminho mais curto (ou mais longo) entre todos os pares de vértices em um grafo direcionado.</p>
+<h2 id="fun%C3%A7%C3%B5es-auxiliares">Funções Auxiliares</h2>
+<p>Funções triviais de mínimo e máximo foram implementadas e utilizadas. Ambas possui complexidade $\Theta(1)$, por se tratar de uma única comparação realizada.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">max</span></span>(a: <span class="hljs-built_in">i32</span>, b: <span class="hljs-built_in">i32</span>) -&gt; <span class="hljs-built_in">i32</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> a &gt; b { a } <span class="hljs-keyword">else</span> { b };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">min</span></span>(a: <span class="hljs-built_in">i32</span>, b: <span class="hljs-built_in">i32</span>) -&gt; <span class="hljs-built_in">i32</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> a &lt; b { a } <span class="hljs-keyword">else</span> { b };
+}
+</div></code></pre>
+<h2 id="pr%C3%A9-etapa-cleansing">Pré-Etapa: Cleansing</h2>
+<p>A primeira etapa do algoritmo é a de limpeza de arestas que possui uma aresta de sentido sentido oposto mas com um valor maior. Essa etapa é apenas uma preparação do algoritmo em si, não sendo considerada para a análise. Sua complexidade é $\Theta(n^2)$ onde $n$ é o número de candidatos, ou o número de nós do grafo, uma vez que o grafo está sendo representado como uma matriz de arestas, e portanto, se tratando de um array bidimensional, precisa ser percorrido em todas as suas posições.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">prepare_graph</span></span>(graph: &amp;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt;) -&gt; <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt; {
+    <span class="hljs-keyword">let</span> contestants_amount: <span class="hljs-built_in">usize</span> = (*graph).len();
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> strong_links: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt; = <span class="hljs-built_in">vec!</span>[<span class="hljs-built_in">vec!</span>[<span class="hljs-number">0</span>; contestants_amount]; contestants_amount];
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..contestants_amount {
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..contestants_amount {
+            <span class="hljs-keyword">if</span> i == j {
+                <span class="hljs-keyword">continue</span>;
+            }
+
+            <span class="hljs-keyword">if</span> *graph[i][j] &gt; *graph[j][i] {
+                strong_links[i][j] = *graph[i][j];
+            }
+        }
+    }
+
+    <span class="hljs-keyword">return</span> strong_links;
+}
+</div></code></pre>
+<h2 id="tamanho-da-entrada">Tamanho da Entrada</h2>
+<p>Conforme descrito nas seções acima, o algoritmo possui uma matriz de arestas como estrutura de dado para cada par de vértices do grafo. Dessa maneira, a matriz será uma matriz quadrada de dimensão $N x N$ onde $N$ é a quantidade de candidatos no processo.</p>
+<h2 id="vers%C3%A3o-iterativa">Versão Iterativa</h2>
+<p>A versão iterativa do algoritmo faz com que o grafo de resultados preparado seja percorrido a cada $C$ vezes a cada célula buscando o caminho mais forte.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">schulze_iterative</span></span>(graph: &amp;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt;) -&gt; <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt; {
+    <span class="hljs-keyword">let</span> contestants_amount: <span class="hljs-built_in">usize</span> = (*graph).len();
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> strong_links: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt; = prepare_graph(graph);
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..contestants_amount {
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..contestants_amount {
+            <span class="hljs-keyword">if</span> i == j { <span class="hljs-keyword">continue</span>; }
+
+            <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..contestants_amount {
+                <span class="hljs-keyword">if</span> !(i != k &amp;&amp; j != k) { <span class="hljs-keyword">continue</span>; }
+
+                <span class="hljs-keyword">let</span> weakest_edge = min(strong_links[j][i], strong_links[i][k]);
+                <span class="hljs-keyword">let</span> strength = max(strong_links[j][k], weakest_edge);
+
+                strong_links[j][k] = strength;
+            }
+        }
+    }
+
+    <span class="hljs-keyword">return</span> strong_links;
+}
+</div></code></pre>
+<h3 id="an%C3%A1lise-de-complexidade-de-tempo">Análise de Complexidade de Tempo</h3>
+<p>A eficência de tempo é analisada determinando o número de repetições da <strong>operação básica</strong> como uma função do tamanho da entrada: $T(n) \approx C_{op}C(n)$ onde $T(n)$ é o tempo de execução, $n$ o tamanho da entrada, $C_{op}$ o tempo de execução da operação básica e $C(n)$ o número de vezes que a operação básica é executada.</p>
+<p>A operação básica do algoritmo é a <strong>comparação entre dois números inteiros</strong>. Ou seja, $C_{op} = C_{comp}$ que representa o custo dessa comparação.<br/>
+O número de vezes que a operação básica é executada depende do tamanho da entrada, visto que existe <em>loops</em> que executam o &quot;<em>tamanho da entrada vezes</em>&quot; contendo a operação básica em seu corpo. <br/>
+A operação básica é executada 4 vezes a cada iteração, em todos os cenários, não possuindo uma diferença de melhor caso, pior caso e caso médio. As comparações são realizadas no primeiro if do corpo do loop mais interno e uma vez cada nas funções de <code>min</code> e <code>max</code>.</p>
+<p>Temos então que $C(n) = \sum_{i=0}^{n-1}\sum_{j=0}^{n-1}\sum_{k=0}^{n-1}4$</p>
+<p>$C(n) = 4\sum_{i=0}^{n-1}\sum_{j=0}^{n-1}\sum_{k=0}^{n-1}1$ <br>
+$C(n) = 4\sum_{i=0}^{n-1}\sum_{j=0}^{n-1}n$ <br>
+$C(n) = 4\sum_{i=0}^{n-1}(n)(n)$
+$C(n) = 4(n)(n)(n)$
+$C(n) = 4n^{3}$</p>
+<p>Logo, temos que: <br>
+$T(n) \approx 4\ C_{comp}\ n^{3}$</p>
+<h4 id="big-o">Big-O</h4>
+<p>Essa função $T(n) \in O(g(n))$ se é limitada superiormente por uma constante múltipla de $g(n)$ para todos $n$ suficientemente grande. Portanto, vamos provar formalmente que $T(n) \in O(n^{3})$. Como $T(n) = C(n)*C_{comp}$ onde $C_{comp}$ é uma constante, ignoraremos a parte da constante.</p>
+<p>$t(n) \leq cg(n)$ para todos $n \geq n_{0}$ <br>
+Pegando $c = 5$ e $n_{0} = 1$, podemos afirmar que:</p>
+<p>$4n^{3} \leq 5n^{3}$ para todo $n \geq 1$</p>
+<p>O algoritmo portanto é $O(n^{3})$</p>
+<h4 id="omega">Omega</h4>
+<p>Essa função $T(n) \in \Omega(g(n))$ se é limitada inferiormente por uma constante múltipla de $g(n)$ para todos $n$ suficientemente grande. Portanto, vamos provar formalmente que $T(n) \in \Omega(n^{3})$. Novamente, ignoraremos a parte da constante do custo de comparação.</p>
+<p>De forma similar, também podemos provar que $T(n) \in \Omega(n^{3})$
+$t(n) \geq cg(n)$ para todos $n \geq n_{0}$ <br>
+Pegando $c = 1$ e $n_{0} = 1$, podemos afirmar que:</p>
+<p>$4n^{3} \geq n^{3}$ para todo $n \geq 1$</p>
+<p>O algoritmo portanto é $\Omega(n^{3})$</p>
+<h4 id="theta">Theta</h4>
+<p>A função $T(n) \in \Theta(g(n))$ se é limitada tanto inferiormente ou superiormente por contantes positivas mútiplas de $g(n)$ para todos $n$ suficientemente grande.</p>
+<p>Temos então que: <br>
+$c_{2}g(n) \leq t(n) \leq c_{1}g(n)$ para todos $n \geq n_{0}$ <br>
+Pegando $c_{1} = 10$, $c_{2} = 2$ e $n_{0} = 1$, podemos afirmar que:</p>
+<p>$2n^{3} \leq 4n^{3} \leq 10n^{3}$ para todo $n \geq 1$</p>
+<p>O algoritmo portanto é $\Theta(n^{3})$</p>
+<h3 id="gr%C3%A1ficos">Gráficos</h3>
+<p>As imagens baixo mostram o comportamento do algoritmo em benchmarks de execuções reais. Com a ajuda de uma função geradora de matrizes de entrada válidas, foi executado o algoritmo com entradas $E = {2,4,6,10,15,20,30,50,75,100,125,150,175,200,250,300,400,500,600,700}$. Foi adicionado um contador de comparações do loop mais interno e o tempo de execução computado como abaixo:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">schulze_iterative</span></span>((...)) {
+    (...)
+
+    <span class="hljs-keyword">let</span> start = std::time::Instant::now();
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> comparisons: <span class="hljs-built_in">u32</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..contestants_amount {
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..contestants_amount {
+            (...)
+            <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..contestants_amount {
+                (...)
+                
+                comparisons += <span class="hljs-number">4</span>;
+            }
+        }
+    }
+    <span class="hljs-keyword">let</span> duration = start.elapsed();
+
+    (...)
+}
+</div></code></pre>
+<p>Uma vez coletados, os dados foram plotados nos gráficos abaixo, em função da quantidade de comparações realizadas e do tempo em segundos. Duas outras equações de referência mostram que o comportamento está coerente com a análise feita, utilizando constantes arbitrárias.</p>
+<center style="background: white;">
+    <img src="./assets/iterative_plot_1.png?x=1" width="300px" height="auto" />
+</center>
+<center style="background: white;">
+    <img src="./assets/iterative_plot_2.png?x=1" width="300px" height="auto" />
+</center>
+<p><br/><hr/><br/></p>
+<h2 id="vers%C3%A3o-recrusiva">Versão Recrusiva</h2>
+<p>Assim como a versão iterativa, o algoritmo recursivo faz com que o grafo de resultados preparado seja percorrido a cada $C$ vezes a cada célula buscando o caminho mais forte.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">schulze_recursive_step</span></span>(strong_links: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt;, j: <span class="hljs-built_in">usize</span>, k: <span class="hljs-built_in">usize</span>, i: <span class="hljs-built_in">usize</span>) -&gt; <span class="hljs-built_in">i32</span> {
+    <span class="hljs-comment">// Base Condition</span>
+    <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> strong_links[j][k];
+    }
+
+    <span class="hljs-comment">// Diagonal</span>
+    <span class="hljs-keyword">if</span> k == j   {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-keyword">let</span> weakest_edge = min(schulze_recursive_step(strong_links, comparisons, j, i, i-<span class="hljs-number">1</span>), schulze_recursive_step(strong_links, comparisons, i, k, i-<span class="hljs-number">1</span>));
+    <span class="hljs-keyword">let</span> strength = max(schulze_recursive_step(strong_links, comparisons, j, k, i-<span class="hljs-number">1</span>), weakest_edge);
+
+    <span class="hljs-keyword">return</span> strength;
+}
+
+
+<span class="hljs-comment">/// Recursive version of Schulze algorithm.</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">schulze_recursive</span></span>(graph: &amp;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt;) -&gt; <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt; {
+    <span class="hljs-keyword">let</span> contestants_amount: <span class="hljs-built_in">usize</span> = (*graph).len();
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> strong_links: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;&gt; = prepare_graph(graph);
+
+    <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> (<span class="hljs-number">0</span>..contestants_amount).rev() {
+        <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> (<span class="hljs-number">0</span>..contestants_amount).rev() {
+            strong_links[a][b] = schulze_recursive_step(&amp;<span class="hljs-keyword">mut</span> strong_links, a, b, contestants_amount - <span class="hljs-number">1</span>);
+        }
+    }
+
+    <span class="hljs-keyword">return</span> strong_links;
+}
+
+</div></code></pre>
+<h3 id="an%C3%A1lise-de-complexidade-de-tempo">Análise de Complexidade de Tempo</h3>
+<p>Assim como na seção da versão iterativa, a operação básica é a comparação de dois inteiros.
+O tamanho da entrada, que é a quantidade de candidatos, é passsado como o último argumento da função, o <code>i</code>.</p>
+<p>A relação de recorrência é dada abaixo:</p>
+<p>{<br>
+  $C(0) = 1$ <br>
+  $C(n) = 3 C(n - 1) + 3$ para n &gt; 0<br>
+}</p>
+<h4 id="forwards-substitution">Forwards Substitution</h4>
+<p>$C(0) = 1$ <br>
+$C(1) = 3C(1-1) + 3 = 3(1) + 3 = 6$ <br>
+$C(2) = 3C(2-1) + 3 = 3(6) + 3 = 21$ <br>
+$C(3) = 3C(3-1) + 3 = 3(21) + 3 = 66$ <br>
+$C(4) = 3C(4-1) + 3 = 3(66) + 3 = 201$ <br>
+$C(5) = 3C(5-1) + 3 = 3(201) + 3 = 606$ <br>
+$C(n) = \dfrac{15 \times 3^n - 9}{6}$
+$C(n) = \dfrac{5 \times 3^n - 3}{2}$</p>
+<h4 id="backwards-substitution">Backwards Substitution</h4>
+<p>$C(n) = 3 \times C(n - 1) + 3$</p>
+<p>$C(n-1) = 3 \times C(n-2) + 3$<br>
+$C(n-2) = 3 \times C(n-3) + 3$<br>
+$C(n-3) = 3 \times C(n-4) + 3$</p>
+<p>$C(n) = 3 \times (3 \times C(n - 1) + 3) + 3$  <br>
+$= 9 \times C(n-1) + 12$  <br>
+$= 9 \times (3 \times C(n-2) + 3) + 12$  <br>
+$= 27 \times C(n-2) + 39$  <br>
+$= 27 \times (3 \times C(n-3) + 3) + 39$  <br>
+$= 81 \times C(n-3) + 120$  <br>
+...</p>
+<p>$C(n) = 3^{k} \times C(n -k) + ?$ (Não consegui desenvolver)</p>
+<h4 id="indu%C3%A7%C3%A3o-matem%C3%A1tica">Indução Matemática</h4>
+<p>Passo base: suponha que $C(n) = \dfrac{5 \times 3^n - 3}{2}$ seja uma fórmula válida para a recorrência definida pra $n = 1,2,3...n$. Ela também precisa ser válida para $k = n + 1$</p>
+<p>$C(n+1) = 3 \times C(n) + 1$ ... (Relação de recorrência)</p>
+<p>$= 3 \times (\dfrac{5 \times 3^n - 3}{2}) + 3$ ... (Hípotese de indução)</p>
+<p><br>
+$= 3 \times (\dfrac{5}{2} \times \dfrac{3^n}{2} - \dfrac{3}{2}) + 3$ ... (Hípotese de indução)</p>
+<p><br>
+$= (\dfrac{15 \times 3^{n}-9}{2}) + \dfrac{6}{2}$</p>
+<p><br>
+$= \dfrac{15 \times 3^{n}-3}{2} $</p>
+<p><br>
+$= \dfrac{(5 \times 3) \times 3^{n}-3}{2} $</p>
+<p><br>
+$= \dfrac{5 \times 3^1 \times 3^{n}-3}{2} $</p>
+<p><br>
+$= \dfrac{5 \times 3^{n+1}-3}{2} $</p>
+<p>Portanto, $C(N) = \dfrac{5\times 3^{n} - 3}{2}$ é uma fórmula fechada válida para a recorrência definida para qualquer $k \in \N$.</p>
+<h4 id="por-limite">Por Limite</h4>
+<p>Comparando a complexidade do algoritmo com a classe de complexidade $3^{n}$ temos que</p>
+<p>$lim_{n \to \infty} \dfrac{t(n)}{g(n)}$</p>
+<p>onde $t(n) = \dfrac{5\times 3^{n} - 3}{2}$ e $g(n) = 3^{n}$</p>
+<p>$=&gt; lim_{n \to \infty} \dfrac{\dfrac{5\times 3^{n} - 3}{2}}{3^n}$</p>
+<p>$= 0.5 \lim_{n \to \infty} -3^{1-x}+5$</p>
+<p>$= 0.5 (\lim_{n \to \infty} -3^{1-x} + \lim_{n \to \infty}5)$</p>
+<p>$= 0.5 ((0) + (5))$</p>
+<p>$= \dfrac{5}{2}$</p>
+<p>Por definição, se o resultado do limite é uma constante, implica que $t(n)$ possui a mesma ordem de crescimento de $g(n)$. Dessarte, $t(n) \in \Theta(n^3)$.</p>
+<h4 id="teorema-mestre">Teorema Mestre</h4>
+<p>O teorema mestre não pode ser aplicado pois ele só permite resolver recorrências da forma $T(n) = aT(n/b) + f(n)$ para $a &gt; 0$ e $b &gt; 1$. No caso de estudo, o algoritmo não tem a parte da divisão, sendo portanto $b = 1$, o que invalida a condição para aplicar o teorema.</p>
+<h3 id="gr%C3%A1ficos">Gráficos</h3>
+<p>As imagens baixo mostram o comportamento do algoritmo em benchmarks de execuções reais, realizadas da mesma maneira que a versão iterativa. Foi executado o algoritmo com entradas $E = {2,3,4,5...15}$.
+Uma vez coletados, os dados foram plotados nos gráficos abaixo, em função da quantidade de comparações realizadas e do tempo em segundos. Duas outras equações de referência mostram que o comportamento está coerente com a análise feita, utilizando constantes arbitrárias.</p>
+<center style="background: white;">
+    <img src="./assets/recursive_plot_1.png?x=3" width="300px" height="auto" />
+</center>
+<center style="background: white;">
+    <img src="./assets/recursive_plot_2.png?x=3" width="300px" height="auto" />
+</center>
+<p><br/><hr/><br/></p>
+
+</body>
+</html>
