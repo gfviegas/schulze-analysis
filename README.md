@@ -13,7 +13,7 @@ O Método Schulze é utilizado por diversas organizações como Ubuntu, Debian, 
 Nesse método de votação, ao invés de cada eleitor escolher um candidato em uma seleção de $N$ candidatos, o eleitor ordena uma subseleção com $M$ desses candidatos, do que mais prefere para o que menos prefere, como mostra o modelo e exemplos abaixo.
 
 <center>
-    <img src="./assets/matrix.png" width="400px" height="auto" />
+    <img src="./assets/ballots.png" width="400px" height="auto" />
 </center>
 
 
